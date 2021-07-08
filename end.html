@@ -9,6 +9,11 @@
 			box-sizing: border-box;
 			font-family: arial, helvetica, sans-serif;
 		}
+
+		body {
+			margin: 0;
+		}
+
 		img {
 			max-width: 100%;
 		}
@@ -16,8 +21,8 @@
 			box-sizing: inherit;
 		}
 
-		.container {
-			margin: 30px;
+		main {
+			margin: 0px;
 			display: grid;
 			grid-gap: 5px;
 			grid-template-areas:
@@ -28,34 +33,44 @@
 				"footer";
 		}
 
-		.container > * {
+		main > * {
 			border: 2px solid green;
 			background-color: #ffec99;
-			padding: 10px;
+			padding: 5px;
 		}
 
 		.main-header {
 			grid-area: header;
+			height: 10vh;
 		}
 
 		.main-content {
 			grid-area: content;
+			height: 60vh;
+
 		}
 
 		.related-links {
 			grid-area: related;
+			height: 10vh;
 		}
 
 		.ads {
 			grid-area: ads;
+			height: 10vh;
 		}
 
 		.main-footer {
 			grid-area: footer;
+			height: 10vh;
 		}
 
 		@media (min-width: 500px) {
-			.container {
+			html {
+				overflow: hidden;
+			}
+
+			main {
 				grid-template-columns: repeat(3,1fr);
 				grid-template-areas:
 				"header header header"
@@ -63,22 +78,35 @@
 				"content content ads"
 				"footer footer footer";
 			}
+			.related-links, .ads {
+				height: 40vh;
+			}
+			.main-content {
+				height: 80vh;
+			}
 		}
 
 		@media (min-width: 800px) {
-			.container {
+			html {
+				overflow: hidden;
+			}
+			main {
 				grid-template-columns:  repeat(4,1fr);
 				grid-template-areas:
 				"header header header header"
 				"related content content ads"
 				"footer footer footer footer";
 			}
+
+			.main-content, .related-links, .ads {
+				height: 80vh;
+			}
 		}
 
 	</style>
 </head>
 <body>
-	<div class="container">
+	<main>
 		<header class="main-header">
 			Header
 		</header>
@@ -94,6 +122,6 @@
 		<footer class="main-footer">
 			Footer
 		</footer>
-	</div>
+	</main>
 </body>
 </html>
